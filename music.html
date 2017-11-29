@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<button id="play">PLAY |> </button>
+	<button id="stop">STOP || </button>
+	<br>
+	<br>
+	<button id="previous"> <<= PREVIOUS</button>
+	<button id="next">NEXT =>> </button>
+	<br>
+	<br>
+	<button id="volumeup">VOLUME UP(+)</button>
+	<button id="volumedown">VOLUME DOWN(-)</button>
+	<br><br>
+	CURRENT SONG : <b><div id ="song"></div></b>
+</body>
+
+<script type="text/javascript">
+	//host = "http://ef2a7134.ngrok.io/"
+	host = 'http://localhost:5000/'
+
+	$("#play").click(function(){
+		//location.reload();
+		$.get( host + "playsong", function( data ) {
+			console.log(data);
+			//$("song").text(data);
+			document.getElementById("song").innerHTML = data;
+		});
+	});
+
+	$("#stop").click(function(){
+		//location.reload();
+		$.get( host + "stopsong", function( data ) {
+			// document.getElementById("song").innerHTML = data;
+		});
+		// location.reload();
+	});
+
+	$("#next").click(function(){
+		//location.reload();
+		$.get( host + "nextsong", function( data ) {
+			document.getElementById("song").innerHTML = data;
+			console.log(data);
+		});
+	});
+
+	$("#previous").click(function(){
+		//location.reload();
+		$.get( host + "lastsong", function( data ) {
+			document.getElementById("song").innerHTML = data;
+		});
+	});
+
+	$("#volumeup").click(function(){
+		// location.reload();
+		$.get( host + "volumeup", function( data ) {
+			//console.log(data);
+			//$("song").text(data);
+			//document.getElementById("song").innerHTML = data;
+		});
+		location.reload();
+
+	});
+
+	$("#volumedown").click(function(){
+		// location.reload();
+		$.get( host + "volumedown", function( data ) {
+			//console.log(data);
+			//$("song").text(data);
+			//document.getElementById("song").innerHTML = data;
+		});
+		location.reload();
+
+	});
+</script>
+
+</html>
